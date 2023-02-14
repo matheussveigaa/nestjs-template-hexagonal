@@ -1,0 +1,20 @@
+version: "3.2"
+volumes:
+  data:
+services:
+  postgres:
+    image: postgres:alpine
+    environment:
+      POSTGRES_USER: customers
+      POSTGRES_PASSWORD: customers
+      POSTGRES_DB: customers
+    ports:
+      - 5422:5432
+    volumes:
+      - data:/var/lib/postgresql/data
+    networks:
+      - customers-service-network
+
+networks:
+    customers-service-network:
+        driver: bridge
