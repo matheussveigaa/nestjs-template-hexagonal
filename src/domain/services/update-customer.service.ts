@@ -5,7 +5,6 @@ import {
   CUSTOMER_REPOSITORY_NAME,
 } from '@domain/repositories/customer.repository';
 import { FindCustomerByIdService } from '@domain/services/find-customer-by-id.service';
-import { EntityNotFoundException } from '@domain/exceptions/entity-not-found.exception';
 
 @Injectable()
 export class UpdateCustomerService {
@@ -17,14 +16,7 @@ export class UpdateCustomerService {
   ) {}
 
   async call(customer: Customer): Promise<Customer> {
-    const hasCustomer = !!(await this.findCustomerByIdService.call(
-      customer.id,
-    ));
-
-    if (!hasCustomer)
-      throw new EntityNotFoundException(
-        `Entidade não encontrada. ID: ${customer.id}`,
-      );
+    await this.findCustomerByIdService.call(customer.id);
 
     return this.customerRepository.update(customer);
   }

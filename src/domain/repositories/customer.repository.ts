@@ -5,7 +5,7 @@ export interface CustomerRepository {
   findAll(): Promise<Customer[]>;
   insert(customer: Customer): Promise<Customer>;
   update(customer: Customer): Promise<Customer>;
-  delete(customer: Customer): void;
+  delete(id: string): void;
 }
 
 export const CUSTOMER_REPOSITORY_NAME = 'CustomerRepository';

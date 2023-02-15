@@ -3,8 +3,6 @@ import {
   Controller,
   Delete,
   Get,
-  HttpException,
-  HttpStatus,
   Inject,
   Param,
   Post,
@@ -58,11 +56,7 @@ export class CustomerController {
 
   @Delete(':id')
   async delete(@Param('id') id: string): Promise<void> {
-    const customer = await this.findCustomerByIdService.call(id);
-
-    if (!customer) throw new HttpException('Not found', HttpStatus.NOT_FOUND);
-
-    this.deleteCustomerService.call(customer);
+    await this.deleteCustomerService.call(id);
   }
 
   @Get()
@@ -75,8 +69,6 @@ export class CustomerController {
   @Get(':id')
   async findById(@Param('id') id: string): Promise<CustomerDTO> {
     const customer = await this.findCustomerByIdService.call(id);
-
-    if (!customer) throw new HttpException('Not found', HttpStatus.NOT_FOUND);
 
     return this.customerPresenter.fromDomainToDTO(customer);
   }

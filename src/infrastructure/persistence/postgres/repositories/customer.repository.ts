@@ -49,7 +49,7 @@ export class CustomerRepositoryImpl implements CustomerRepository {
     return customer;
   }
 
-  async delete(customer: Customer): Promise<void> {
-    await this.repository.delete({ id: customer.id });
+  async delete(id: string): Promise<void> {
+    await this.repository.delete({ id });
   }
 }

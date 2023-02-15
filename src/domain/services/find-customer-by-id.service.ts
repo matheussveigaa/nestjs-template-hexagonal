@@ -4,6 +4,7 @@ import {
   CustomerRepository,
   CUSTOMER_REPOSITORY_NAME,
 } from '@domain/repositories/customer.repository';
+import { EntityNotFoundException } from '@domain/exceptions/entity-not-found.exception';
 
 export class FindCustomerByIdService {
   constructor(
@@ -11,7 +12,12 @@ export class FindCustomerByIdService {
     private customerRepository: CustomerRepository,
   ) {}
 
-  call(id: string): Promise<Customer> {
-    return this.customerRepository.findById(id);
+  async call(id: string): Promise<Customer> {
+    const customer = await this.customerRepository.findById(id);
+
+    if (!customer)
+      throw new EntityNotFoundException(`Entidade não encontrada. ID: ${id}`);
+
+    return customer;
   }
 }
