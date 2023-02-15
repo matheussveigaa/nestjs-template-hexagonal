@@ -1,6 +1,7 @@
 import { Injectable } from '@nestjs/common';
 import { Customer } from '@domain/entities/customer.entity';
 import { CustomerDTO } from '@application/dtos/customer.dto';
+import { DocumentType } from '@domain/enums/document-type.enum';
 
 @Injectable()
 export class CustomerPresenter {
@@ -12,6 +13,7 @@ export class CustomerPresenter {
     domain.id = dto.id;
     domain.name = dto.name;
     domain.document = dto.document.number;
+    domain.documentType = dto.document.type as DocumentType;
 
     return domain;
   }
@@ -23,7 +25,7 @@ export class CustomerPresenter {
 
     dto.id = domain.id;
     dto.name = domain.name;
-    dto.document = { number: domain.document, type: undefined };
+    dto.document = { number: domain.document, type: domain.documentType };
 
     return dto;
   }

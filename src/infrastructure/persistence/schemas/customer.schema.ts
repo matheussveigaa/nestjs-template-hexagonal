@@ -1,3 +1,4 @@
+import { DocumentType } from '@domain/enums/document-type.enum';
 import { Entity, Column, PrimaryGeneratedColumn } from 'typeorm';
 
 @Entity()
@@ -10,4 +11,7 @@ export class CustomerSchema {
 
   @Column()
   document: string;
+
+  @Column({ default: DocumentType.CPF })
+  documentType: string;
 }

@@ -1,6 +1,7 @@
 import { Injectable } from '@nestjs/common';
 import { Customer } from '@domain/entities/customer.entity';
 import { CustomerSchema } from '@infrastructure/persistence/schemas/customer.schema';
+import { DocumentType } from '@domain/enums/document-type.enum';
 
 @Injectable()
 export class TypeOrmCustomerPresenter {
@@ -12,6 +13,7 @@ export class TypeOrmCustomerPresenter {
     customerSchema.id = customer.id;
     customerSchema.name = customer.name;
     customerSchema.document = customer.document;
+    customerSchema.documentType = customer.documentType;
 
     return customerSchema;
   }
@@ -24,6 +26,7 @@ export class TypeOrmCustomerPresenter {
     customer.id = customerSchema.id;
     customer.name = customerSchema.name;
     customer.document = customerSchema.document;
+    customer.documentType = customerSchema.documentType as DocumentType;
 
     return customer;
   }
