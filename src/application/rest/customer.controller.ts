@@ -10,13 +10,13 @@ import {
   Post,
   Put,
 } from '@nestjs/common';
-import { CreateCustomerService } from 'src/domain/services/create-customer.service';
-import { DeleteCustomerService } from 'src/domain/services/delete-customer.service';
-import { FindAllCustomersService } from 'src/domain/services/find-all-customers.service';
-import { FindCustomerByIdService } from 'src/domain/services/find-customer-by-id.service';
-import { UpdateCustomerService } from 'src/domain/services/update-customer.service';
-import { CustomerDTO } from '../dtos/customer.dto';
-import { CustomerPresenter } from '../presenters/customer.presenter';
+import { CreateCustomerService } from '@domain/services/create-customer.service';
+import { DeleteCustomerService } from '@domain/services/delete-customer.service';
+import { FindAllCustomersService } from '@domain/services/find-all-customers.service';
+import { FindCustomerByIdService } from '@domain/services/find-customer-by-id.service';
+import { UpdateCustomerService } from '@domain/services/update-customer.service';
+import { CustomerDTO } from '@application/dtos/customer.dto';
+import { CustomerPresenter } from '@application/presenters/customer.presenter';
 
 @Controller('customers')
 export class CustomerController {

@@ -1,6 +1,6 @@
 import { Injectable } from '@nestjs/common';
-import { Customer } from 'src/domain/entities/customer.entity';
-import { CustomerSchema } from '../schemas/customer.schema';
+import { Customer } from '@domain/entities/customer.entity';
+import { CustomerSchema } from '@infrastructure/persistence/schemas/customer.schema';
 
 @Injectable()
 export class TypeOrmCustomerPresenter {

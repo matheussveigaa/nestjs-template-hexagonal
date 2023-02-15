@@ -1,7 +1,7 @@
 import { Module } from '@nestjs/common';
-import { DomainModule } from 'src/domain/domain.module';
-import { presenters } from './presenters';
-import { CustomerController } from './rest/customer.controller';
+import { DomainModule } from '@domain/domain.module';
+import { presenters } from '@application/presenters';
+import { CustomerController } from '@application/rest/customer.controller';
 
 @Module({
   imports: [DomainModule],

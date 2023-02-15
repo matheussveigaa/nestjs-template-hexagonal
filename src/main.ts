@@ -1,3 +1,5 @@
+require('module-alias/register');
+
 import { NestFactory } from '@nestjs/core';
 import { SwaggerModule, DocumentBuilder } from '@nestjs/swagger';
 import { RootModule } from './root.module';

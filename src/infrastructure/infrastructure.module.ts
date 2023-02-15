@@ -1,8 +1,8 @@
 import { Global, Module } from '@nestjs/common';
 import { TypeOrmModule } from '@nestjs/typeorm';
-import { presenters } from './persistence/presenters';
-import { repositories } from './persistence/repositories';
-import { schemas } from './persistence/schemas';
+import { presenters } from '@infrastructure/persistence/presenters';
+import { repositories } from '@infrastructure/persistence/repositories';
+import { schemas } from '@infrastructure/persistence/schemas';
 
 @Global()
 @Module({

@@ -1,4 +1,4 @@
-import { Customer } from '../entities/customer.entity';
+import { Customer } from '@domain/entities/customer.entity';
 
 export interface CustomerRepository {
   findById(id: string): Promise<Customer>;
