@@ -1,4 +1,4 @@
-import { DomainException } from '@domain/exceptions/domain.exception';
+import { EntityNotFoundException } from '@domain/exceptions/entity-not-found.exception';
 import {
   ExceptionFilter,
   Catch,
@@ -8,12 +8,12 @@ import {
 } from '@nestjs/common';
 import { Response } from 'express';
 
-@Catch(DomainException)
-export class DomainExceptionFilter implements ExceptionFilter {
+@Catch(EntityNotFoundException)
+export class EntityNotFoundExceptionFilter implements ExceptionFilter {
   catch(exception: HttpException, host: ArgumentsHost) {
     const ctx = host.switchToHttp();
     const response = ctx.getResponse<Response>();
-    const status = HttpStatus.BAD_REQUEST;
+    const status = HttpStatus.NOT_FOUND;
 
     response.status(status).json({
       statusCode: status,

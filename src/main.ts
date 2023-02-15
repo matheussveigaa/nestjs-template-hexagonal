@@ -1,6 +1,7 @@
 require('module-alias/register');
 
-import { HttpExceptionFilter } from '@infrastructure/filters/domain-exception.filter';
+import { DomainExceptionFilter } from '@infrastructure/filters/domain-exception.filter';
+import { EntityNotFoundExceptionFilter } from '@infrastructure/filters/entity-not-found.filter';
 import { NestFactory } from '@nestjs/core';
 import { SwaggerModule, DocumentBuilder } from '@nestjs/swagger';
 import { RootModule } from './root.module';
@@ -19,7 +20,10 @@ async function bootstrap() {
 
   SwaggerModule.setup('swagger', app, document);
 
-  app.useGlobalFilters(new HttpExceptionFilter());
+  app.useGlobalFilters(
+    new DomainExceptionFilter(),
+    new EntityNotFoundExceptionFilter(),
+  );
 
   await app.listen(3000);
 }

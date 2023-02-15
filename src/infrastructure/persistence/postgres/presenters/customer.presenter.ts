@@ -1,6 +1,6 @@
 import { Injectable } from '@nestjs/common';
 import { Customer } from '@domain/entities/customer.entity';
-import { CustomerSchema } from '@infrastructure/persistence/schemas/customer.schema';
+import { CustomerSchema } from '@infrastructure/persistence/postgres/schemas/customer.schema';
 import { DocumentType } from '@domain/enums/document-type.enum';
 
 @Injectable()

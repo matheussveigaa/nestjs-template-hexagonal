@@ -49,11 +49,6 @@ export class CustomerController {
     @Param('id') id: string,
     @Body() dto: CustomerDTO,
   ): Promise<CustomerDTO> {
-    const hasCustomer = !!(await this.findCustomerByIdService.call(id));
-
-    if (!hasCustomer)
-      throw new HttpException('Not found', HttpStatus.NOT_FOUND);
-
     const customer = this.customerPresenter.fromDtoToDomain(dto);
 
     return this.customerPresenter.fromDomainToDTO(

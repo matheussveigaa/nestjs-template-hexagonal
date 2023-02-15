@@ -1,10 +1,10 @@
 import { Inject, Injectable } from '@nestjs/common';
 import { Customer } from '@domain/entities/customer.entity';
 import { CustomerRepository } from '@domain/repositories/customer.repository';
-import { CustomerSchema } from '@infrastructure/persistence/schemas/customer.schema';
+import { CustomerSchema } from '@infrastructure/persistence/postgres/schemas/customer.schema';
 import { InjectRepository } from '@nestjs/typeorm';
 import { Repository } from 'typeorm';
-import { TypeOrmCustomerPresenter } from '@infrastructure/persistence/presenters/customer.presenter';
+import { TypeOrmCustomerPresenter } from '@infrastructure/persistence/postgres/presenters/customer.presenter';
 
 @Injectable()
 export class CustomerRepositoryImpl implements CustomerRepository {
